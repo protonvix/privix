@@ -1,533 +1,336 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Promise Felix | Web designer</title>
-  <meta name="description" content="Promise Felix is a web designer creating premium, fast and mobile friendly websites for businesses. View recent work or request a free website audit.">
-  <meta name="theme-color" content="#000000">
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Promise Felix | Web designer for growing businesses">
-  <meta property="og:description" content="Website design, redesign and free audits. See recent work and start your project.">
-  <meta property="og:image" content="assets/work/famous-desktop.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vix Studio · Websites that win trust at first glance</title>
+<meta name="description" content="Vix Automations designs modern, mobile-first websites for car dealers, real estate, restaurants and growing businesses in Nigeria and the UK. Choose from 10 designs or describe your own, and get a fixed quote.">
+<meta property="og:title" content="Vix Studio · Websites that win trust at first glance">
+<meta property="og:description" content="Choose from 10 website designs, explore interactive 3D, and send us your project brief in minutes.">
+<meta property="og:image" content="https://vixautomationsportfolio.pages.dev/assets/og.jpg">
+<meta property="og:url" content="https://vixautomationsportfolio.pages.dev/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://vixautomationsportfolio.pages.dev/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav" data-nav>
-    <a class="nav__brand" href="#top" aria-label="Promise Felix home">
-      <img src="assets/logo.svg" alt="" width="32" height="32">
-      <span>Promise Felix</span>
-    </a>
-    <nav class="nav__links" aria-label="Main">
-      <a href="#top" class="is-current">Home</a>
-      <a href="#work">Work</a>
-      <a href="#why">Why me</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="btn btn--primary btn--sm nav__cta" href="#start">Free audit</a>
-    <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
-  </header>
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="28" height="28">Vix <span>Studio</span></a>
+  <ul class="nav-links">
+    <li><a href="#designs">Designs</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn btn-primary btn-sm nav-cta" href="#brief">Start your project</a>
+  <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="panel"><i></i><i></i></button>
+</nav>
+<div class="panel" id="panel" aria-hidden="true">
+  <a href="#designs">Designs</a><a href="#work">Work</a><a href="#process">Process</a><a href="#faq">FAQ</a><a href="#brief">Start your project</a>
+</div>
 
-  <div class="mobile-menu" id="mobile-menu" hidden>
-    <nav aria-label="Mobile">
-      <a href="#top">Home</a>
-      <a href="#work">Work</a>
-      <a href="#why">Why me</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#faq">FAQ</a>
-      <a href="#start" class="btn btn--primary">Get a free audit</a>
-    </nav>
-  </div>
-
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="pill hero__in" style="--d:0"><span class="dot"></span> Web designer · Available for new projects</p>
-          <h1 class="hero__title hero__in" style="--d:1">
-            Web design that<br>
-            earns your<br>
-            customers' trust.
-          </h1>
-          <p class="hero__sub hero__in" style="--d:2">
-            I'm Promise Felix, a web designer and the founder of Vix Automations.
-            I design websites that present your business with clarity and credibility,
-            so the right customers choose you with confidence.
-          </p>
-          <div class="hero__actions hero__in" style="--d:3">
-            <a class="btn btn--primary btn--lg" href="#start">Request a free website audit <i class="ph ph-arrow-right"></i></a>
-            <a class="link-quiet" href="#work"><i class="ph ph-squares-four"></i> View my work</a>
-          </div>
-          <ul class="hero__trust hero__in" style="--d:4">
-            <li><i class="ph-fill ph-seal-check"></i> Fixed quote before work starts</li>
-            <li><i class="ph-fill ph-seal-check"></i> You own everything</li>
-            <li><i class="ph-fill ph-seal-check"></i> Support after launch</li>
-          </ul>
-        </div>
-
-        <div class="hero__stage hero__in" style="--d:2" data-tilt aria-hidden="true">
-          <div class="device device--laptop">
-            <div class="device__bar"><span></span><span></span><span></span><em>famousautomobile</em></div>
-            <div class="device__screen"><img src="assets/work/famous-desktop.jpg" alt=""></div>
-          </div>
-          <div class="device device--back">
-            <div class="device__bar"><span></span><span></span><span></span><em>vixautomations</em></div>
-            <div class="device__screen"><img src="assets/work/vix-desktop.jpg" alt=""></div>
-          </div>
-          <div class="device device--phone">
-            <div class="device__screen"><img src="assets/work/famous-mobile.jpg" alt=""></div>
-          </div>
-          <div class="float-chip float-chip--a"><i class="ph-fill ph-lightning"></i> Fast on every device</div>
-          <div class="float-chip float-chip--b"><i class="ph-fill ph-chart-line-up"></i> Built to convert</div>
-        </div>
+<main id="main">
+<!-- Hero with live 3D -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot"></span>Web design studio · Lagos and London</div>
+      <h1>Websites that<br>win trust at<br>first glance</h1>
+      <p class="sub">We design modern, mobile-first websites that make your business look established and turn visitors into enquiries. Pick a design, or describe what you want, and get a fixed quote.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#designs">Choose a design <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn-line" href="#brief">Describe your website</a>
       </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <section class="strip" aria-label="Industries I design for">
-      <div class="marquee"><div class="marquee__track">
-        <span>Automobile</span><i></i><span>Real estate</span><i></i><span>Restaurants</span><i></i><span>Beauty and salons</span><i></i><span>Clinics</span><i></i><span>Churches</span><i></i><span>Schools</span><i></i><span>Fashion</span><i></i><span>Logistics</span><i></i><span>Coaches</span><i></i>
-        <span aria-hidden="true">Automobile</span><i></i><span aria-hidden="true">Real estate</span><i></i><span aria-hidden="true">Restaurants</span><i></i><span aria-hidden="true">Beauty and salons</span><i></i><span aria-hidden="true">Clinics</span><i></i><span aria-hidden="true">Churches</span><i></i><span aria-hidden="true">Schools</span><i></i><span aria-hidden="true">Fashion</span><i></i><span aria-hidden="true">Logistics</span><i></i><span aria-hidden="true">Coaches</span><i></i>
-      </div></div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="eyebrow">Portfolio</p>
-          <h2 class="section__title">Selected work</h2>
-          <p class="section__lead">A live agency website and a dealership redesign concept. Hover over a preview to scroll through the full website.</p>
-        </div>
-
-        <article class="work reveal">
-          <a class="work__frame" data-work-link="famous" target="_blank" rel="noopener" aria-label="Open the Famous Automobile website">
-            <div class="device__bar"><span></span><span></span><span></span><em>famousautomobile</em></div>
-            <div class="work__scroll"><img src="assets/work/famous-full.jpg" alt="Full page preview of the Famous Automobile website" loading="lazy"></div>
-          </a>
-          <div class="work__info">
-            <p class="work__meta"><span>Concept</span><span>Automobile</span><span>Lagos, Nigeria</span><span>2026</span></p>
-            <h3>Famous Automobile <small style="font-size:.55em;font-weight:500;opacity:.7">(redesign concept)</small></h3>
-            <p class="work__desc">An unsolicited redesign concept showing how a luxury, sports and SUV dealership in Ojodu, Lagos could present itself online. Buyers browse the showroom, compare specifications and book a test drive in minutes.</p>
-            <ul class="work__list">
-              <li><i class="ph ph-check"></i> Premium, cinematic brand presentation</li>
-              <li><i class="ph ph-check"></i> Searchable showroom with category filters</li>
-              <li><i class="ph ph-check"></i> Test drive booking with instant enquiry details</li>
-              <li><i class="ph ph-check"></i> Showroom location, directions and mobile first layout</li>
-            </ul>
-            <div class="work__actions">
-              <a class="btn btn--outline" data-work-link="famous" target="_blank" rel="noopener">View the concept <i class="ph ph-arrow-up-right"></i></a>
-              <button class="btn btn--ghost" type="button" data-like-style="cinematic">I want one like this</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="work work--flip reveal">
-          <a class="work__frame" data-work-link="vix" target="_blank" rel="noopener" aria-label="Open the Vix Automations website">
-            <div class="device__bar"><span></span><span></span><span></span><em>vixautomations</em></div>
-            <div class="work__scroll"><img src="assets/work/vix-full.jpg" alt="Full page preview of the Vix Automations website" loading="lazy"></div>
-          </a>
-          <div class="work__info">
-            <p class="work__meta"><span>Agency</span><span>Services</span><span>2026</span></p>
-            <h3>Vix Automations</h3>
-            <p class="work__desc">A multi page agency website presenting CRM automation, web design and TikTok marketing services, with transparent pricing in the visitor's own currency.</p>
-            <ul class="work__list">
-              <li><i class="ph ph-check"></i> Four service pages with clearly defined packages</li>
-              <li><i class="ph ph-check"></i> Pricing that converts to the visitor's currency</li>
-              <li><i class="ph ph-check"></i> Built in chat assistant for common questions</li>
-              <li><i class="ph ph-check"></i> Custom quote form for web design jobs</li>
-            </ul>
-            <div class="work__thumbs">
-              <img src="assets/work/vix-webdesign.jpg" alt="Vix Automations web design page" loading="lazy">
-              <img src="assets/work/vix-tiktok.jpg" alt="Vix Automations TikTok marketing page" loading="lazy">
-              <img src="assets/work/vix-pricing.jpg" alt="Vix Automations pricing page" loading="lazy">
-            </div>
-            <div class="work__actions">
-              <a class="btn btn--outline" data-work-link="vix" target="_blank" rel="noopener">View live site <i class="ph ph-arrow-up-right"></i></a>
-              <button class="btn btn--ghost" type="button" data-like-style="clean">I want one like this</button>
-            </div>
-          </div>
-        </article>
-
-        <a class="next-card reveal" href="#start">
-          <div>
-            <p class="eyebrow">Your project</p>
-            <h3>Your business could be the next featured project.</h3>
-            <p>Share your goals and receive a clear plan, timeline and fixed quote.</p>
-          </div>
-          <span class="next-card__go"><i class="ph ph-arrow-right"></i></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- TAGLINE -->
-    <section class="tagline" aria-label="What I believe">
-      <div class="container">
-        <p class="tagline__text" data-words>People decide whether to trust a business within seconds of visiting its website. I design every page to earn that trust.</p>
-      </div>
-    </section>
-
-    <!-- WHY ME -->
-    <section class="section" id="why">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="eyebrow">Why clients trust me</p>
-          <h2 class="section__title">Clear commitments<br>on every project.</h2>
-          <p class="section__lead">Hiring a web designer is an investment. Here is what you can rely on from the first conversation to launch day and beyond.</p>
-        </div>
-        <div class="services">
-          <article class="service reveal"><i class="ph ph-receipt"></i><h3>Fixed quote upfront</h3><p>You know the full price before any work begins. No hidden fees and no surprise invoices.</p></article>
-          <article class="service reveal"><i class="ph ph-pencil-ruler"></i><h3>You approve the design</h3><p>Nothing is built until you are happy with the design. Revisions are part of the process.</p></article>
-          <article class="service reveal"><i class="ph ph-calendar-check"></i><h3>Clear timelines</h3><p>You receive a delivery date at the start and progress updates at every stage.</p></article>
-          <article class="service reveal"><i class="ph ph-key"></i><h3>You own everything</h3><p>Your domain, website files and content belong to you. No lock in and no ongoing obligation.</p></article>
-          <article class="service reveal"><i class="ph ph-devices"></i><h3>Tested on every device</h3><p>Every website is checked on phones, tablets and desktops before it goes live.</p></article>
-          <article class="service reveal"><i class="ph ph-lifebuoy"></i><h3>Support after launch</h3><p>I remain available for updates, fixes and questions once your website is live.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section section--alt" id="services">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="eyebrow">Services</p>
-          <h2 class="section__title">Services built<br>around your goals.</h2>
-        </div>
-        <div class="services">
-          <article class="service reveal">
-            <i class="ph ph-browser"></i>
-            <h3>New website design</h3>
-            <p>A complete website shaped around your brand, your customers and your goals, from first concept to launch.</p>
-            <button class="service__link" type="button" data-pick-service="design">Start a new site <i class="ph ph-arrow-right"></i></button>
-          </article>
-          <article class="service reveal">
-            <i class="ph ph-arrows-clockwise"></i>
-            <h3>Website redesign</h3>
-            <p>Your existing website rebuilt to look credible, load quickly on every device and convert more visitors into enquiries.</p>
-            <button class="service__link" type="button" data-pick-service="redesign">Redesign my site <i class="ph ph-arrow-right"></i></button>
-          </article>
-          <article class="service reveal">
-            <i class="ph ph-magnifying-glass"></i>
-            <h3>Free website audit</h3>
-            <p>A clear review of your speed, mobile experience, search visibility and user journey, with practical recommendations.</p>
-            <button class="service__link" type="button" data-pick-service="audit">Audit my site <i class="ph ph-arrow-right"></i></button>
-          </article>
-          <article class="service reveal">
-            <i class="ph ph-wrench"></i>
-            <h3>Fixes and speed</h3>
-            <p>Broken pages, slow loading and forms that fail to send, resolved quickly without a full rebuild.</p>
-            <button class="service__link" type="button" data-pick-service="redesign">Get it fixed <i class="ph ph-arrow-right"></i></button>
-          </article>
-          <article class="service reveal">
-            <i class="ph ph-target"></i>
-            <h3>Landing pages</h3>
-            <p>Focused pages for a product, offer or ad campaign, designed to turn clicks into enquiries.</p>
-            <button class="service__link" type="button" data-pick-service="design">Plan a landing page <i class="ph ph-arrow-right"></i></button>
-          </article>
-          <article class="service reveal">
-            <i class="ph ph-flow-arrow"></i>
-            <h3>CRM and automation</h3>
-            <p>Through Vix Automations, I set up GoHighLevel systems that follow up with every new lead automatically.</p>
-            <a class="service__link" data-work-link="vix" target="_blank" rel="noopener">Visit Vix Automations <i class="ph ph-arrow-up-right"></i></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="eyebrow">Process</p>
-          <h2 class="section__title">A clear process,<br>from brief to launch.</h2>
-        </div>
-        <ol class="steps">
-          <li class="step reveal"><span class="step__num">01</span><h3>Discovery</h3><p>We discuss your goals, audience and competitors. You receive a clear plan, timeline and fixed quote.</p></li>
-          <li class="step reveal"><span class="step__num">02</span><h3>Design</h3><p>You review and approve the look and layout before development begins. Revisions are included.</p></li>
-          <li class="step reveal"><span class="step__num">03</span><h3>Development</h3><p>I build the site mobile first, with fast loading pages, working forms and a search friendly structure.</p></li>
-          <li class="step reveal"><span class="step__num">04</span><h3>Launch and support</h3><p>Your website goes live on your domain after final testing, and I remain available for updates.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- START PROJECT WIZARD -->
-    <section class="section section--alt" id="start">
-      <div class="container">
-        <div class="section__head section__head--center reveal">
-          <p class="eyebrow">Start your project</p>
-          <h2 class="section__title">Tell me about your project.<br>Receive a clear plan and quote.</h2>
-          <p class="section__lead">It takes about two minutes. When you finish, your request opens in WhatsApp, ready to send, and I reply personally.</p>
-        </div>
-
-        <div class="wizard reveal" data-wizard>
-          <ol class="wizard__progress" aria-label="Progress">
-            <li class="is-active" data-step-dot="1"><span>1</span> Service</li>
-            <li data-step-dot="2"><span>2</span> Your site</li>
-            <li data-step-dot="3"><span>3</span> Business</li>
-            <li data-step-dot="4"><span>4</span> Send</li>
-          </ol>
-
-          <form class="wizard__form" data-wizard-form novalidate>
-            <!-- STEP 1 -->
-            <fieldset class="wstep is-active" data-step="1">
-              <legend class="wstep__title">What do you need?</legend>
-              <div class="choice-grid choice-grid--3">
-                <label class="choice">
-                  <input type="radio" name="service" value="design" required>
-                  <span class="choice__box"><i class="ph ph-browser"></i><strong>Design a new website</strong><small>Start from scratch with a website built around your brand.</small></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="service" value="redesign">
-                  <span class="choice__box"><i class="ph ph-arrows-clockwise"></i><strong>Redesign my website</strong><small>Upgrade a website that no longer reflects your business.</small></span>
-                </label>
-                <label class="choice">
-                  <input type="radio" name="service" value="audit">
-                  <span class="choice__box"><i class="ph ph-magnifying-glass"></i><strong>Free website audit</strong><small>Receive a professional review with clear recommendations.</small></span>
-                </label>
-              </div>
-              <p class="wstep__error" data-error="service" aria-live="polite"></p>
-            </fieldset>
-
-            <!-- STEP 2 -->
-            <fieldset class="wstep" data-step="2">
-              <legend class="wstep__title" data-step2-title>Your current website</legend>
-
-              <div data-has-site>
-                <div class="field">
-                  <label for="w-url">Website address</label>
-                  <div class="url-row">
-                    <input id="w-url" name="url" type="url" inputmode="url" placeholder="yourbusiness.com" autocomplete="url">
-                    <button class="btn btn--outline" type="button" data-run-audit><i class="ph ph-gauge"></i> Run quick check</button>
-                  </div>
-                  <p class="field__error" data-error="url" aria-live="polite"></p>
-                </div>
-
-                <div class="audit" data-audit hidden>
-                  <div class="audit__loading" data-audit-loading>
-                    <div class="skel skel--ring"></div><div class="skel skel--ring"></div><div class="skel skel--ring"></div><div class="skel skel--ring"></div>
-                    <p>Checking speed, SEO and mobile layout. This takes about 20 seconds.</p>
-                  </div>
-                  <div class="audit__result" data-audit-result hidden>
-                    <div class="scores" data-scores></div>
-                    <p class="audit__note" data-audit-note></p>
-                  </div>
-                  <p class="audit__fallback" data-audit-fallback hidden>
-                    <i class="ph ph-info"></i>
-                    <span>Automatic results are unavailable at the moment. I will review your website personally and include the full findings in my reply.</span>
-                  </p>
-                </div>
-
-                <div class="field">
-                  <span class="field__label">What problems do you notice? <span class="muted">(pick any)</span></span>
-                  <div class="chips" data-chips="issues">
-                    <button type="button" class="chip" data-value="Looks outdated">Looks outdated</button>
-                    <button type="button" class="chip" data-value="Slow to load">Slow to load</button>
-                    <button type="button" class="chip" data-value="Bad on phones">Bad on phones</button>
-                    <button type="button" class="chip" data-value="No enquiries or sales">No enquiries or sales</button>
-                    <button type="button" class="chip" data-value="Not showing on Google">Not showing on Google</button>
-                    <button type="button" class="chip" data-value="Broken pages or forms">Broken pages or forms</button>
-                    <button type="button" class="chip" data-value="Hard to update">Hard to update</button>
-                  </div>
-                </div>
-              </div>
-
-              <div data-no-site hidden>
-                <div class="field">
-                  <span class="field__label">What kind of website do you want?</span>
-                  <div class="chips chips--single" data-chips="siteType">
-                    <button type="button" class="chip" data-value="Business website">Business website</button>
-                    <button type="button" class="chip" data-value="Landing page">Landing page</button>
-                    <button type="button" class="chip" data-value="Online store">Online store</button>
-                    <button type="button" class="chip" data-value="Booking website">Booking website</button>
-                    <button type="button" class="chip" data-value="Portfolio">Portfolio</button>
-                    <button type="button" class="chip" data-value="Not sure yet">Not sure yet</button>
-                  </div>
-                  <p class="field__error" data-error="siteType" aria-live="polite"></p>
-                </div>
-                <div class="field">
-                  <span class="field__label">Do you have a domain name?</span>
-                  <div class="chips chips--single" data-chips="domain">
-                    <button type="button" class="chip" data-value="Yes, I have one">Yes, I have one</button>
-                    <button type="button" class="chip" data-value="No, help me get one">No, help me get one</button>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- STEP 3 -->
-            <fieldset class="wstep" data-step="3">
-              <legend class="wstep__title">About the business</legend>
-              <div class="field">
-                <label for="w-company">Company or brand name</label>
-                <input id="w-company" name="company" type="text" placeholder="Famous Automobile" autocomplete="organization">
-                <p class="field__error" data-error="company" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <span class="field__label">Niche</span>
-                <div class="chips chips--single" data-chips="niche">
-                  <button type="button" class="chip" data-value="Automobile">Automobile</button>
-                  <button type="button" class="chip" data-value="Real estate">Real estate</button>
-                  <button type="button" class="chip" data-value="Restaurant and food">Restaurant and food</button>
-                  <button type="button" class="chip" data-value="Beauty and salon">Beauty and salon</button>
-                  <button type="button" class="chip" data-value="Health and clinic">Health and clinic</button>
-                  <button type="button" class="chip" data-value="Church or NGO">Church or NGO</button>
-                  <button type="button" class="chip" data-value="School and training">School and training</button>
-                  <button type="button" class="chip" data-value="Fashion">Fashion</button>
-                  <button type="button" class="chip" data-value="Online store">Online store</button>
-                  <button type="button" class="chip" data-value="Logistics">Logistics</button>
-                  <button type="button" class="chip" data-value="Coach or consultant">Coach or consultant</button>
-                  <button type="button" class="chip" data-value="Other" data-other>Other</button>
-                </div>
-                <input class="other-input" name="nicheOther" type="text" placeholder="Type your niche" hidden aria-label="Your niche">
-                <p class="field__error" data-error="niche" aria-live="polite"></p>
-              </div>
-              <div class="field">
-                <span class="field__label">Style you like</span>
-                <div class="choice-grid choice-grid--3">
-                  <label class="choice choice--style">
-                    <input type="radio" name="style" value="cinematic">
-                    <span class="choice__box"><img src="assets/work/famous-desktop.jpg" alt="" loading="lazy"><strong>Cinematic and bold</strong><small>Like Famous Automobile</small></span>
-                  </label>
-                  <label class="choice choice--style">
-                    <input type="radio" name="style" value="clean">
-                    <span class="choice__box"><img src="assets/work/vix-desktop.jpg" alt="" loading="lazy"><strong>Clean and professional</strong><small>Like Vix Automations</small></span>
-                  </label>
-                  <label class="choice choice--style">
-                    <input type="radio" name="style" value="unsure">
-                    <span class="choice__box choice__box--plain"><i class="ph ph-sparkle"></i><strong>Not sure</strong><small>Recommend what fits my niche</small></span>
-                  </label>
-                </div>
-              </div>
-              <div class="field">
-                <span class="field__label">Main goals <span class="muted">(pick any)</span></span>
-                <div class="chips" data-chips="goals">
-                  <button type="button" class="chip" data-value="More enquiries">More enquiries</button>
-                  <button type="button" class="chip" data-value="Online sales">Online sales</button>
-                  <button type="button" class="chip" data-value="Bookings">Bookings</button>
-                  <button type="button" class="chip" data-value="Look more premium">Look more premium</button>
-                  <button type="button" class="chip" data-value="Show up on Google">Show up on Google</button>
-                </div>
-              </div>
-            </fieldset>
-
-            <!-- STEP 4 -->
-            <fieldset class="wstep" data-step="4">
-              <legend class="wstep__title">Your contact details</legend>
-              <div class="field-row">
-                <div class="field">
-                  <label for="w-name">Your name</label>
-                  <input id="w-name" name="name" type="text" placeholder="Adaeze Okafor" autocomplete="name">
-                  <p class="field__error" data-error="name" aria-live="polite"></p>
-                </div>
-                <div class="field">
-                  <label for="w-email">Email <span class="muted">(optional)</span></label>
-                  <input id="w-email" name="email" type="email" placeholder="you@business.com" autocomplete="email">
-                  <p class="field__error" data-error="email" aria-live="polite"></p>
-                </div>
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="w-time">When do you need it?</label>
-                  <select id="w-time" name="timeline">
-                    <option value="">Choose a timeline</option>
-                    <option>As soon as possible</option>
-                    <option>Within 2 weeks</option>
-                    <option>Within a month</option>
-                    <option>Just exploring</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="w-notes">Anything else <span class="muted">(optional)</span></label>
-                  <input id="w-notes" name="notes" type="text" placeholder="Pages you need, a site you like…">
-                </div>
-              </div>
-
-              <div class="summary" data-summary></div>
-            </fieldset>
-
-            <div class="wizard__nav">
-              <button class="btn btn--ghost" type="button" data-prev hidden><i class="ph ph-arrow-left"></i> Back</button>
-              <button class="btn btn--primary" type="button" data-next>Continue <i class="ph ph-arrow-right"></i></button>
-              <button class="btn btn--whatsapp" type="submit" data-submit hidden><i class="ph-fill ph-whatsapp-logo"></i> Send to my WhatsApp</button>
-            </div>
-          </form>
-
-          <div class="wizard__done" data-done hidden>
-            <i class="ph-fill ph-check-circle"></i>
-            <h3>Your request is ready to send</h3>
-            <p>WhatsApp has opened with your project details. Press send and I will reply personally, usually the same day.</p>
-            <div class="wizard__done-actions">
-              <a class="btn btn--whatsapp" data-done-link target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i> Open WhatsApp again</a>
-              <button class="btn btn--ghost" type="button" data-restart>Start another request</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <div class="container faq">
-        <div class="section__head reveal">
-          <p class="eyebrow">FAQ</p>
-          <h2 class="section__title">Frequently asked questions</h2>
-          <p class="section__lead">Have another question? <a class="text-link" data-wa-link target="_blank" rel="noopener">Send me a message</a> and I will answer personally.</p>
-        </div>
-        <div class="faq__list reveal">
-          <details><summary>Is the website audit really free?</summary><p>Yes. You receive a clear summary of what is working, what is holding your website back and what to fix first. There is no obligation to hire me.</p></details>
-          <details><summary>How long does a website take?</summary><p>A landing page usually takes a few days. A full business website typically takes one to three weeks, depending on the number of pages and how quickly content is ready. You receive a delivery date before work begins.</p></details>
-          <details><summary>How much does a website cost?</summary><p>Every project is priced individually based on pages and features. You receive a fixed quote before any work begins, and the price only changes if the scope changes.</p></details>
-          <details><summary>Will I own my website?</summary><p>Yes. Once your project is paid for, your domain, website files, images and content belong to you. There is no lock in.</p></details>
-          <details><summary>How does payment work?</summary><p>Projects usually start with a deposit, with the balance due before launch. The exact terms are agreed in writing at the start.</p></details>
-          <details><summary>Do you work with businesses outside Nigeria?</summary><p>Yes. I work with businesses in Nigeria, the United Kingdom and internationally, with clear communication by call, email and WhatsApp.</p></details>
-          <details><summary>Can you redesign a site built on WordPress, Wix or GoHighLevel?</summary><p>Yes. I can redesign on your current platform or recommend a faster setup if it serves your business better.</p></details>
-          <details><summary>Will my website work well on phones?</summary><p>Yes. Every website is designed for phones first and tested on phones, tablets and desktops before launch.</p></details>
-          <details><summary>Do you help after launch?</summary><p>Yes. I remain available for updates, fixes and new pages after your website goes live.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="container contact__inner reveal">
-        <h2 class="section__title">Let's build a website<br>your business deserves.</h2>
-        <p class="section__lead">Request a free audit or send me a message. Every enquiry receives a personal reply.</p>
-        <div class="contact__actions">
-          <a class="btn btn--whatsapp btn--lg" data-wa-link target="_blank" rel="noopener"><i class="ph-fill ph-whatsapp-logo"></i> Chat on WhatsApp</a>
-          <a class="btn btn--outline btn--lg" data-email-link><i class="ph ph-envelope-simple"></i> Send an email</a>
-        </div>
-        <div class="socials socials--big" data-socials></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <a class="nav__brand" href="#top"><img src="assets/logo.svg" alt="" width="28" height="28"><span>Promise Felix</span></a>
-      <div class="socials" data-socials></div>
-      <p class="footer__copy">© <span data-year></span> Promise Felix · <a href="privacy.html">Privacy</a></p>
+      <ul class="promises">
+        <li><i class="ph-fill ph-seal-check" aria-hidden="true"></i>Fixed quote before we start</li>
+        <li><i class="ph-fill ph-seal-check" aria-hidden="true"></i>You approve the design first</li>
+        <li><i class="ph-fill ph-seal-check" aria-hidden="true"></i>You own everything</li>
+      </ul>
     </div>
-  </footer>
 
-  <a class="wa-float" data-wa-link target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+    <div class="viewer" id="viewer" data-mode="car">
+      <div class="viewer-top">
+        <div class="seg" role="group" aria-label="3D model">
+          <button type="button" data-view="car" aria-pressed="true"><i class="ph ph-car-profile" aria-hidden="true"></i>Car dealer</button>
+          <button type="button" data-view="house" aria-pressed="false"><i class="ph ph-house-line" aria-hidden="true"></i>Real estate</button>
+        </div>
+        <button class="icon-btn" id="viewer-spin" type="button" aria-label="Auto rotate"><i class="ph ph-arrows-clockwise" aria-hidden="true"></i></button>
+      </div>
+      <canvas id="viewer-canvas" aria-label="Interactive 3D model. Drag to rotate, scroll or pinch to zoom."></canvas>
+      <p class="viewer-loading" id="viewer-loading">Loading 3D model…</p>
+      <div class="viewer-bottom">
+        <div class="swatches only-car" role="group" aria-label="Paint colour">
+          <button type="button" data-paint="#c8102e" aria-pressed="true" style="--c:#c8102e" aria-label="Red"></button>
+          <button type="button" data-paint="#0b0b0f" aria-pressed="false" style="--c:#0b0b0f" aria-label="Black"></button>
+          <button type="button" data-paint="#e9e9ec" aria-pressed="false" style="--c:#e9e9ec" aria-label="White"></button>
+          <button type="button" data-paint="#1f4fd8" aria-pressed="false" style="--c:#1f4fd8" aria-label="Blue"></button>
+          <button type="button" data-paint="#f2b705" aria-pressed="false" style="--c:#f2b705" aria-label="Yellow"></button>
+        </div>
+        <div class="seg seg-sm only-house" role="group" aria-label="Lighting">
+          <button type="button" data-time="day" aria-pressed="true"><i class="ph ph-sun" aria-hidden="true"></i>Day</button>
+          <button type="button" data-time="night" aria-pressed="false"><i class="ph ph-moon" aria-hidden="true"></i>Night</button>
+        </div>
+        <span class="viewer-hint"><i class="ph ph-hand-pointing" aria-hidden="true"></i>Drag to rotate</span>
+      </div>
+      <p class="viewer-caption">Interactive 3D like this can go on your website: 360° car views, property models, product spins.</p>
+    </div>
+  </div>
+</header>
 
-  <script src="app.js" defer></script>
+<div class="marquee" aria-label="Industries we design for">
+  <div class="track">
+    <span>Car dealers</span><span>Real estate</span><span>Restaurants</span><span>Clinics</span><span>Salons and spas</span><span>Schools</span><span>Churches</span><span>Logistics</span><span>Online stores</span><span>Law and finance</span><span>Hotels and shortlets</span><span>Car rentals</span>
+    <span aria-hidden="true">Car dealers</span><span aria-hidden="true">Real estate</span><span aria-hidden="true">Restaurants</span><span aria-hidden="true">Clinics</span><span aria-hidden="true">Salons and spas</span><span aria-hidden="true">Schools</span><span aria-hidden="true">Churches</span><span aria-hidden="true">Logistics</span><span aria-hidden="true">Online stores</span><span aria-hidden="true">Law and finance</span><span aria-hidden="true">Hotels and shortlets</span><span aria-hidden="true">Car rentals</span>
+  </div>
+</div>
+
+<!-- Why -->
+<section class="block" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="label">Why it matters</div>
+    <h2 class="h2" id="why-h">People decide if they trust you in seconds</h2>
+    <div class="why">
+      <article class="tile rv"><i class="ph ph-device-mobile" aria-hidden="true"></i><h3>Built for phones first</h3><p>Most customers find you on a phone. Every page is designed and tested on small screens before anything else.</p></article>
+      <article class="tile rv"><i class="ph ph-lightning" aria-hidden="true"></i><h3>Fast to load</h3><p>Slow sites lose visitors. We keep pages light so they open quickly, even on mobile data.</p></article>
+      <article class="tile rv"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i><h3>Enquiries to your WhatsApp</h3><p>Booking forms, call buttons and WhatsApp chat send leads straight to you, day or night.</p></article>
+      <article class="tile rv"><i class="ph ph-magnifying-glass" aria-hidden="true"></i><h3>Ready for Google</h3><p>Clean structure, titles and descriptions so customers searching in your area can find you.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Design gallery -->
+<section class="block alt" id="designs" aria-labelledby="designs-h">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="label">Choose a design</div>
+        <h2 class="h2" id="designs-h">10 designs to start from</h2>
+        <p class="lead">Pick the style that feels like your business. We adapt it with your brand, colours, photos and content. Not quite right? Describe your own.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter designs">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="auto" aria-pressed="false">Automotive</button>
+        <button type="button" data-filter="estate" aria-pressed="false">Real estate</button>
+        <button type="button" data-filter="food" aria-pressed="false">Food</button>
+        <button type="button" data-filter="business" aria-pressed="false">Business</button>
+        <button type="button" data-filter="creative" aria-pressed="false">Creative</button>
+      </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <div class="custom-cta rv">
+      <div><h3>Have something else in mind?</h3><p>Describe the website you want in your own words, and we'll help you turn it into a clear, professional brief.</p></div>
+      <a class="btn btn-primary" href="#brief" data-design="custom">Describe my own design <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-label="Our belief">
+  <div class="wrap"><p class="reveal-text" id="tagline">Your website is your first salesperson. It should look like the business you are becoming.</p></div>
+</section>
+
+<!-- Work -->
+<section class="block" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="label">Our work</div>
+    <h2 class="h2" id="work-h">Live and concept websites you can click through</h2>
+    <p class="lead">One live agency website and three industry concepts built for fictional businesses. Every feature works, so try them.</p>
+    <div class="work">
+      <a class="work-card big rv" href="https://vixautomations.pages.dev" target="_blank" rel="noopener">
+        <div class="shot"><img src="assets/work/vix.jpg" alt="Vix Automations website homepage" loading="lazy"></div>
+        <div class="meta"><span class="badge live">Live</span><span>Agency · Multi-page</span></div>
+        <h3>Vix Automations</h3>
+        <p>Service pages, pricing in the visitor's own currency, a chat assistant and a custom quote form.</p>
+        <span class="go">Visit the site <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card rv" href="https://vixautomations.pages.dev/work/car-dealer/" target="_blank" rel="noopener">
+        <div class="shot"><img src="assets/work/kestrel.jpg" alt="Kestrel Motors concept car dealer website" loading="lazy"></div>
+        <div class="meta"><span class="badge">Concept</span><span>Car dealer</span></div>
+        <h3>Kestrel Motors</h3>
+        <p>Stock search, finance calculator, trade in and test drive booking.</p>
+        <span class="go">Open concept <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card rv" href="https://vixautomations.pages.dev/work/restaurant/" target="_blank" rel="noopener">
+        <div class="shot"><img src="assets/work/ember.jpg" alt="Ember and Salt concept restaurant website" loading="lazy"></div>
+        <div class="meta"><span class="badge">Concept</span><span>Restaurant</span></div>
+        <h3>Ember &amp; Salt</h3>
+        <p>Tabbed menu, table booking with real time slots and private dining.</p>
+        <span class="go">Open concept <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+      </a>
+      <a class="work-card rv" href="https://vixautomations.pages.dev/work/real-estate/" target="_blank" rel="noopener">
+        <div class="shot"><img src="assets/work/tola.jpg" alt="Tola Adeyemi concept real estate website" loading="lazy"></div>
+        <div class="meta"><span class="badge">Concept</span><span>Real estate</span></div>
+        <h3>Tola Adeyemi, broker</h3>
+        <p>Buy or rent search, listings, neighbourhood guide and viewing booking.</p>
+        <span class="go">Open concept <i class="ph ph-arrow-up-right" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="block alt" id="process" aria-labelledby="process-h">
+  <div class="wrap">
+    <div class="label">How it works</div>
+    <h2 class="h2" id="process-h">From brief to live website in four steps</h2>
+    <ol class="steps">
+      <li class="rv"><span>01</span><h3>Send your brief</h3><p>Choose a design or describe your own below. It takes about three minutes.</p></li>
+      <li class="rv"><span>02</span><h3>Get a fixed quote</h3><p>We reply within one business day with a clear price, timeline and what's included.</p></li>
+      <li class="rv"><span>03</span><h3>Approve the design</h3><p>You see your homepage design first. Nothing is built until you're happy with it.</p></li>
+      <li class="rv"><span>04</span><h3>Launch and support</h3><p>We build, test on every device, connect your domain and stay on hand after launch.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Brief builder -->
+<section class="block" id="brief" aria-labelledby="brief-h">
+  <div class="wrap">
+    <div class="label">Start your project</div>
+    <h2 class="h2" id="brief-h">Describe your website in three minutes</h2>
+    <p class="lead">Answer a few quick questions. We'll turn your answers into a professional project brief and send it straight to our email and WhatsApp.</p>
+
+    <div class="builder">
+      <form class="steps-form" id="brief-form" novalidate>
+        <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+        <p class="step-count" id="step-count" aria-live="polite">Step 1 of 6</p>
+
+        <fieldset class="step" data-step="1">
+          <legend>About your business</legend>
+          <div class="fields">
+            <div><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name" placeholder="Adaeze Okafor"></div>
+            <div><label for="f-business">Business name</label><input id="f-business" name="business" required placeholder="Okafor Autos"></div>
+            <div class="full"><label>Industry</label><div class="chips" data-group="industry" data-single></div></div>
+            <div><label for="f-location">Where are you based?</label><input id="f-location" name="location" placeholder="Lekki, Lagos"></div>
+            <div><label for="f-current">Current website (if any)</label><input id="f-current" name="current" placeholder="www.yourbusiness.com"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="2" hidden>
+          <legend>What do you need?</legend>
+          <div class="fields">
+            <div class="full"><label>Project type</label><div class="chips" data-group="project" data-single></div></div>
+            <div class="full"><label>What should the website do for you? (choose all that apply)</label><div class="chips" data-group="goals"></div></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="3" hidden>
+          <legend>Pages and features</legend>
+          <div class="fields">
+            <div class="full"><label>Pages</label><div class="chips" data-group="pages"></div></div>
+            <div class="full"><label>Features</label><div class="chips" data-group="features"></div></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="4" hidden>
+          <legend>Design direction</legend>
+          <div class="fields">
+            <div class="full"><label>Choose a design, or describe your own</label><div class="design-pick" id="design-pick"></div></div>
+            <div class="full"><label>Style words</label><div class="chips" data-group="style"></div></div>
+            <div><label for="f-colours">Preferred colours</label><input id="f-colours" name="colours" placeholder="Navy and gold"></div>
+            <div><label for="f-refs">Websites you like</label><input id="f-refs" name="refs" placeholder="Links or names"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="5" hidden>
+          <legend>Budget, timing and content</legend>
+          <div class="fields">
+            <div class="full"><label>Budget</label><div class="chips" data-group="budget" data-single></div></div>
+            <div class="full"><label>When do you need it?</label><div class="chips" data-group="timeline" data-single></div></div>
+            <div class="full"><label>What do you already have?</label><div class="chips" data-group="content"></div></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="6" hidden>
+          <legend>Your details and notes</legend>
+          <div class="fields">
+            <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@business.com"></div>
+            <div><label for="f-phone">WhatsApp number</label><input id="f-phone" name="phone" required inputmode="tel" autocomplete="tel" placeholder="0803 412 7790 or +44 7700 900418"></div>
+            <div class="full">
+              <label for="f-notes">Anything else? Write it however you like</label>
+              <textarea id="f-notes" name="notes" rows="4" placeholder="e.g. i want my site to show all my cars with prices and people should book test drive on whatsapp"></textarea>
+              <button class="btn btn-soft btn-sm" type="button" id="polish"><i class="ph ph-magic-wand" aria-hidden="true"></i>Make it professional</button>
+              <p class="hint" id="polish-msg" aria-live="polite"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-nav">
+          <button class="btn btn-line" type="button" id="back" hidden><i class="ph ph-arrow-left" aria-hidden="true"></i>Back</button>
+          <button class="btn btn-primary" type="button" id="next">Next <i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+          <button class="btn btn-primary" type="submit" id="send" hidden><i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>Send my brief</button>
+        </div>
+        <p class="msg" id="form-msg" role="status"></p>
+      </form>
+
+      <aside class="brief-preview" aria-labelledby="pv-h">
+        <div class="pv-head"><h3 id="pv-h"><i class="ph ph-file-text" aria-hidden="true"></i>Your project brief</h3><button class="icon-btn" type="button" id="copy" aria-label="Copy brief"><i class="ph ph-copy" aria-hidden="true"></i></button></div>
+        <pre id="brief-text" tabindex="0">Start answering and your professional brief will appear here.</pre>
+        <p class="pv-foot"><i class="ph ph-lock-simple" aria-hidden="true"></i>Sent only to Vix Automations. We reply within one business day.</p>
+      </aside>
+    </div>
+
+    <div class="done" id="done" hidden>
+      <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+      <h3>Your brief is on its way</h3>
+      <p id="done-text">We've received your brief by email. Tap the button below to also send it on WhatsApp so we can reply faster.</p>
+      <div class="cta-row center">
+        <a class="btn btn-primary" id="done-wa" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Send on WhatsApp</a>
+        <a class="btn btn-line" id="done-mail"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Send by email instead</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block alt" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div><div class="label">Questions</div><h2 class="h2" id="faq-h">Good to know before you start</h2><p class="lead">Can't find your answer? Message us on WhatsApp.</p></div>
+    <div class="faq">
+      <details><summary>How much does a website cost?</summary><p>Every project gets a fixed quote based on the pages and features you need. You know the full price before any work starts, with no hidden fees.</p></details>
+      <details><summary>How long does it take?</summary><p>Most business websites take two to four weeks from approved design to launch. Larger sites with booking or payments can take longer. We agree a date upfront.</p></details>
+      <details><summary>Can you redesign my current website?</summary><p>Yes. We can redesign an outdated site, fix a slow or broken one, or recover a site whose domain has expired.</p></details>
+      <details><summary>Can I add 3D like the car and house above?</summary><p>Yes. Interactive 3D works well for car dealers, real estate and product brands. We'll advise if it suits your site and keep it fast on phones.</p></details>
+      <details><summary>Do I own the website?</summary><p>Yes. Your domain, website files and content belong to you. There is no lock in.</p></details>
+      <details><summary>How do I pay?</summary><p>By Payoneer, Cleva, Wise, or bank transfer to accounts in Nigeria, the UK and the USA. Details are on your invoice.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="block final" aria-labelledby="final-h">
+  <div class="wrap center">
+    <h2 class="h2" id="final-h">Ready for a website people trust?</h2>
+    <p class="lead">Send your brief today and get a fixed quote within one business day.</p>
+    <div class="cta-row center"><a class="btn btn-primary" href="#brief">Start your project <i class="ph ph-arrow-right" aria-hidden="true"></i></a><a class="btn btn-line" data-wa-plain target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Chat on WhatsApp</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <div><a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="24" height="24">Vix <span>Studio</span></a><p>Web design by Vix Automations, founded by Promise Felix.</p></div>
+    <div class="foot-links">
+      <a href="mailto:vixautomations@gmail.com"><i class="ph ph-envelope-simple" aria-hidden="true"></i>vixautomations@gmail.com</a>
+      <a href="https://wa.me/447723149573" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>WhatsApp UK +44 7723 149573</a>
+      <a href="https://wa.me/message/WV3WLO4FC656K" target="_blank" rel="noopener"><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>WhatsApp Nigeria</a>
+      <a href="https://vixautomations.pages.dev" target="_blank" rel="noopener"><i class="ph ph-globe" aria-hidden="true"></i>vixautomations.pages.dev</a>
+    </div>
+  </div>
+  <div class="wrap legal"><span>© <span id="yr">2026</span> Vix Automations</span><a href="privacy.html">Privacy</a><span>3D car: Ferrari 458 Italia model by vicent091036 (Sketchfab), via three.js examples. Concept sites are for fictional businesses.</span></div>
+</footer>
+
+<a class="wa-fab" data-wa-plain target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i></a>
+
+<script src="app.js"></script>
+<script type="module" src="scene.js"></script>
 </body>
 </html>

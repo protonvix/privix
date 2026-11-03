@@ -1,352 +1,290 @@
-/* =========================================================
-   Promise Felix portfolio
-   EDIT HERE: WhatsApp, email, social links, live site links.
-   Leave a social link empty ("") to hide its icon.
-   ========================================================= */
-const CONFIG = {
-  whatsapp: "447723149573",           // UK line, digits only, with country code
-  whatsappNG: "https://wa.me/message/WV3WLO4FC656K", // Nigeria line (message link, no prefilled text)
-  email: "vixautomations@gmail.com",
-  socials: {
-    linkedin: "https://www.linkedin.com/in/promise-felix-a491a7233/",
-    instagram: "",
-    tiktok: "",
-    x: "",
-    facebook: "",
-    youtube: "",
-    github: "",
-  },
-  // Live links for your projects. Replace with your Netlify links once deployed.
-  works: {
-    famous: "famous-automobile/",
-    vix: "https://vixautomations.pages.dev/",
-  },
-  // Optional free Google PageSpeed API key for the automatic audit.
-  // Get one at https://developers.google.com/speed/docs/insights/v5/get-started
-  pagespeedKey: "",
-};
+(function () {
+  "use strict";
 
-const ICONS = { linkedin: "linkedin-logo", instagram: "instagram-logo", tiktok: "tiktok-logo", x: "x-logo", facebook: "facebook-logo", youtube: "youtube-logo", github: "github-logo" };
-const LABELS = { linkedin: "LinkedIn", instagram: "Instagram", tiktok: "TikTok", x: "X", facebook: "Facebook", youtube: "YouTube", github: "GitHub" };
-const $ = (s, el = document) => el.querySelector(s);
-const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-// Visitors in Nigeria go to the Nigerian line; everyone else to the UK line.
-const inNigeria = () => {
-  try { if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Africa/Lagos") return true; } catch (e) {}
-  return (navigator.languages || [navigator.language || ""]).some((l) => /-NG$/i.test(l));
-};
-// keepText: the message carries form details, so always use the UK number.
-const waLink = (text, keepText) => (!keepText && inNigeria() ? CONFIG.whatsappNG : `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`);
+  /* ===== Settings ===== */
+  var EMAIL = "vixautomations@gmail.com";
+  var EMAIL_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL; // delivers the brief to the inbox
+  var WA_UK = "447723149573";                                 // can carry the brief text
+  var WA_NG = "https://wa.me/message/WV3WLO4FC656K";          // Nigeria line, no prefilled text
 
-/* ---------- Links ---------- */
-$$("[data-wa-link]").forEach((a) => (a.href = waLink("Hello Promise, I visited your portfolio and would like to discuss a website project.")));
-$$("[data-email-link]").forEach((a) => (a.href = `mailto:${CONFIG.email}`));
-$$("[data-work-link]").forEach((a) => (a.href = CONFIG.works[a.dataset.workLink]));
-$("[data-year]").textContent = new Date().getFullYear();
-const socialHTML =
-  `<a href="${waLink("Hello Promise, I visited your portfolio and would like to discuss a website project.")}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>` +
-  Object.entries(CONFIG.socials).filter(([, url]) => url)
-    .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${LABELS[k]}"><i class="ph ph-${ICONS[k]}"></i></a>`).join("") +
-  `<a href="mailto:${CONFIG.email}" aria-label="Email"><i class="ph ph-envelope-simple"></i></a>`;
-$$("[data-socials]").forEach((el) => (el.innerHTML = socialHTML));
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
 
-/* ---------- Nav ---------- */
-const nav = $("[data-nav]"), toggle = $(".nav__toggle"), menu = $("#mobile-menu");
-let lastY = 0, ticking = false;
-addEventListener("scroll", () => {
-  if (ticking) return; ticking = true;
-  requestAnimationFrame(() => {
-    const y = scrollY;
-    nav.classList.toggle("is-scrolled", y > 40);
-    nav.classList.toggle("is-hidden", y > lastY && y > 500 && !menu.classList.contains("is-open"));
-    lastY = y; ticking = false;
-  });
-}, { passive: true });
-function setMenu(open) {
-  toggle.setAttribute("aria-expanded", String(open));
-  toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  document.body.style.overflow = open ? "hidden" : "";
-  if (open) { menu.hidden = false; requestAnimationFrame(() => menu.classList.add("is-open")); }
-  else { menu.classList.remove("is-open"); setTimeout(() => { if (!menu.classList.contains("is-open")) menu.hidden = true; }, 500); }
-}
-toggle.addEventListener("click", () => setMenu(toggle.getAttribute("aria-expanded") !== "true"));
-$$("a", menu).forEach((a) => a.addEventListener("click", () => setMenu(false)));
-addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.classList.contains("is-open")) setMenu(false); });
+  function inNigeria() {
+    try { if (Intl.DateTimeFormat().resolvedOptions().timeZone === "Africa/Lagos") return true; } catch (e) {}
+    return (navigator.languages || [navigator.language || ""]).some(function (l) { return /-NG$/i.test(l); });
+  }
+  function waText(text) { return "https://wa.me/" + WA_UK + "?text=" + encodeURIComponent(text); }
+  var waPlain = inNigeria() ? WA_NG : waText("Hello Vix Automations, I visited your website and I'd like to discuss a website project.");
+  $$("[data-wa-plain]").forEach(function (a) { a.href = waPlain; });
+  $("#yr").textContent = new Date().getFullYear();
 
-const navLinks = $$(".nav__links a");
-const secObs = new IntersectionObserver((es) => es.forEach((e) => {
-  if (e.isIntersecting) navLinks.forEach((a) => a.classList.toggle("is-current", a.getAttribute("href") === `#${e.target.id}`));
-}), { rootMargin: "-45% 0px -50% 0px" });
-["top", "work", "why", "services", "process", "faq"].forEach((id) => secObs.observe(document.getElementById(id)));
+  /* ===== Designs ===== */
+  var DESIGNS = [
+    { id: 1, name: "Midnight Luxe", tags: ["auto"], desc: "Dark, cinematic and premium, with full-screen photography.", best: "Luxury car dealers, car rentals, jewellers" },
+    { id: 2, name: "Clean Estate", tags: ["estate"], desc: "Bright and airy, with a large property search up front.", best: "Real estate agencies, brokers, shortlets" },
+    { id: 3, name: "Bold Editorial", tags: ["food", "creative"], desc: "Huge headlines and a confident magazine feel.", best: "Restaurants, fashion brands, events" },
+    { id: 4, name: "Glass Tech", tags: ["business"], desc: "Dark tech look with glowing glass panels.", best: "Startups, fintech, software, apps" },
+    { id: 5, name: "Warm Organic", tags: ["food"], desc: "Soft warm tones, elegant type and arched imagery.", best: "Restaurants, cafés, bakeries, wellness" },
+    { id: 6, name: "Corporate Trust", tags: ["business"], desc: "Structured, calm and confident in deep blue.", best: "Law, finance, consulting, logistics" },
+    { id: 7, name: "Neo Brutal", tags: ["creative"], desc: "Loud colour, thick outlines and bold type.", best: "Agencies, streetwear, creators" },
+    { id: 8, name: "Fresh Clinic", tags: ["business"], desc: "Calm mint, rounded shapes and a friendly feel.", best: "Clinics, dentists, pharmacies, salons" },
+    { id: 9, name: "Photo Showcase", tags: ["creative", "estate", "auto"], desc: "Full-screen photography with minimal text.", best: "Photographers, hotels, venues, car showrooms" },
+    { id: 10, name: "Playful Colour", tags: ["business", "creative"], desc: "Bright colour blocks and a cheerful layout.", best: "Schools, kids brands, churches, retail" }
+  ];
+  var gallery = $("#gallery");
+  gallery.innerHTML = DESIGNS.map(function (d) {
+    return '<article class="design rv' + (d.id < 3 ? ' feat' : '') + '" data-tags="' + d.tags.join(" ") + '">' +
+      '<button class="thumb" type="button" data-preview="' + d.id + '" aria-label="Preview the ' + d.name + ' design"><img src="assets/designs/d' + d.id + (d.id < 3 ? '' : '-sm') + '.jpg" alt="' + d.name + ' website design preview" loading="lazy" width="600" height="400"><span class="num">Design ' + d.id + '</span></button>' +
+      '<div class="body"><h3>' + d.name + '</h3><p>' + d.desc + '</p><p class="best">Best for: ' + d.best + '</p>' +
+      '<div class="actions"><button class="icon-btn" type="button" data-preview="' + d.id + '" aria-label="Preview the ' + d.name + ' design"><i class="ph ph-eye" aria-hidden="true"></i></button>' +
+      '<a class="btn btn-primary btn-sm grow" href="#brief" data-design="' + d.id + '">Choose this design</a></div></div></article>';
+  }).join("");
 
-/* ---------- Hero tilt ---------- */
-const stage = $("[data-tilt]");
-if (stage && !reduceMotion && matchMedia("(pointer: fine)").matches) {
-  let raf = 0;
-  stage.closest(".hero").addEventListener("pointermove", (e) => {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      raf = 0;
-      const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
-      stage.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 6}deg)`;
+  $$("[data-filter]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      $$("[data-filter]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      var f = b.dataset.filter;
+      $$(".design").forEach(function (c) { c.hidden = f !== "all" && c.dataset.tags.split(" ").indexOf(f) < 0; });
     });
   });
-  stage.style.transition = "transform 800ms cubic-bezier(0.22, 1, 0.36, 1)";
-  stage.style.transformStyle = "preserve-3d";
-}
 
-/* ---------- Reveals ---------- */
-const revObs = new IntersectionObserver((es, o) => es.forEach((e) => {
-  if (!e.isIntersecting) return;
-  e.target.classList.add("is-in"); o.unobserve(e.target);
-}), { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-$$(".reveal").forEach((el) => {
-  const sib = $$(":scope > .reveal", el.parentElement), i = sib.indexOf(el);
-  if (i > 0) el.style.transitionDelay = `${Math.min(i * 80, 400)}ms`;
-  revObs.observe(el);
-});
-
-/* ---------- Tagline words ---------- */
-const tag = $("[data-words]");
-if (tag) {
-  const accent = new Set(["seconds", "trust."]);
-  tag.innerHTML = tag.textContent.trim().split(/\s+/).map((w) => `<span class="w${accent.has(w) ? " is-accent" : ""}">${w}</span>`).join(" ");
-  const words = $$(".w", tag);
-  let raf = 0;
-  const update = () => { raf = 0; const t = innerHeight * 0.72; words.forEach((w) => w.classList.toggle("is-on", w.getBoundingClientRect().top < t)); };
-  const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
-  new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) addEventListener("scroll", onScroll, { passive: true });
-    else removeEventListener("scroll", onScroll);
-    update();
-  }).observe(tag);
-}
-
-/* =========================================================
-   Project wizard
-   ========================================================= */
-const form = $("[data-wizard-form]");
-const wizard = $("[data-wizard]");
-const F = (n) => form.elements[n];
-const steps = $$(".wstep", form);
-const dots = $$("[data-step-dot]");
-const btnPrev = $("[data-prev]"), btnNext = $("[data-next]"), btnSubmit = $("[data-submit]");
-const doneBox = $("[data-done]");
-const state = { issues: [], goals: [], siteType: "", domain: "", niche: "", audit: null };
-let step = 1;
-
-const SERVICE_LABEL = { design: "New website design", redesign: "Website redesign", audit: "Free website audit" };
-const STYLE_LABEL = { cinematic: "Cinematic and bold (like Famous Automobile)", clean: "Clean and professional (like Vix Automations)", unsure: "Not sure, recommend one" };
-
-// Chips
-$$("[data-chips]").forEach((group) => {
-  const key = group.dataset.chips;
-  const single = group.classList.contains("chips--single");
-  group.addEventListener("click", (e) => {
-    const chip = e.target.closest(".chip"); if (!chip) return;
-    const v = chip.dataset.value;
-    if (single) {
-      $$(".chip", group).forEach((c) => c.classList.toggle("is-on", c === chip));
-      state[key] = v;
-      if (key === "niche") {
-        const other = $(".other-input", group.parentElement);
-        other.hidden = !chip.hasAttribute("data-other");
-        if (!other.hidden) other.focus();
-      }
-    } else {
-      chip.classList.toggle("is-on");
-      state[key] = $$(".chip.is-on", group).map((c) => c.dataset.value);
-    }
-    chip.setAttribute("aria-pressed", chip.classList.contains("is-on"));
-    clearError(key);
+  var dlg = document.createElement("dialog");
+  dlg.setAttribute("aria-label", "Design preview");
+  document.body.appendChild(dlg);
+  gallery.addEventListener("click", function (e) {
+    var p = e.target.closest("[data-preview]");
+    if (!p) return;
+    var d = DESIGNS[+p.dataset.preview - 1];
+    dlg.innerHTML = '<div class="dlg-bar"><h3>Design ' + d.id + ': ' + d.name + '</h3><div class="cta-row" style="margin:0"><a class="btn btn-primary btn-sm" href="#brief" data-design="' + d.id + '">Choose this design</a><button class="btn btn-line btn-sm" type="button" data-close>Close</button></div></div>' +
+      '<img src="assets/designs/d' + d.id + '.jpg" alt="' + d.name + ' full design preview" width="1200" height="800">';
+    dlg.showModal();
   });
-});
+  dlg.addEventListener("click", function (e) { if (e.target === dlg || e.target.closest("[data-close]") || e.target.closest("[data-design]")) dlg.close(); });
 
-const service = () => (F("service").value || "");
-function showError(key, msg) {
-  const el = $(`[data-error="${key}"]`, form); if (el) el.textContent = msg;
-  const input = form.elements[key]; if (input && input.setAttribute) input.setAttribute("aria-invalid", "true");
-}
-function clearError(key) {
-  const el = $(`[data-error="${key}"]`, form); if (el) el.textContent = "";
-  const input = form.elements[key]; if (input && input.removeAttribute) input.removeAttribute("aria-invalid");
-}
-["url", "company", "name", "email"].forEach((k) => F(k).addEventListener("input", () => clearError(k)));
-$$("input[name=service]", form).forEach((r) => r.addEventListener("change", () => clearError("service")));
-
-function normaliseUrl(raw) {
-  let v = raw.trim(); if (!v) return "";
-  if (!/^https?:\/\//i.test(v)) v = "https://" + v;
-  try { const u = new URL(v); return u.hostname.includes(".") ? u.href : ""; } catch { return ""; }
-}
-
-function validateStep(n) {
-  if (n === 1 && !service()) { showError("service", "Choose one option to continue."); return false; }
-  if (n === 2) {
-    if (service() === "design") {
-      if (!state.siteType) { showError("siteType", "Pick the kind of website you want."); return false; }
-    } else {
-      if (!normaliseUrl(F("url").value)) { showError("url", "Enter your website address, for example yourbusiness.com"); F("url").focus(); return false; }
-    }
-  }
-  if (n === 3) {
-    let ok = true;
-    if (F("company").value.trim().length < 2) { showError("company", "Enter your company or brand name."); ok = false; }
-    const niche = state.niche === "Other" ? F("nicheOther").value.trim() : state.niche;
-    if (!niche) { showError("niche", "Pick your niche, or choose Other and type it."); ok = false; }
-    if (!ok) return false;
-  }
-  if (n === 4) {
-    let ok = true;
-    if (F("name").value.trim().length < 2) { showError("name", "Please enter your name."); ok = false; }
-    const em = F("email").value.trim();
-    if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { showError("email", "That email address does not look right."); ok = false; }
-    return ok;
-  }
-  return true;
-}
-
-function goTo(n) {
-  step = n;
-  steps.forEach((s) => s.classList.toggle("is-active", +s.dataset.step === n));
-  dots.forEach((d) => {
-    const i = +d.dataset.stepDot;
-    d.classList.toggle("is-active", i === n);
-    d.classList.toggle("is-done", i < n);
-  });
-  btnPrev.hidden = n === 1;
-  btnNext.hidden = n === 4;
-  btnSubmit.hidden = n !== 4;
-  if (n === 2) {
-    const design = service() === "design";
-    $("[data-has-site]").hidden = design;
-    $("[data-no-site]").hidden = !design;
-    $("[data-step2-title]").textContent = design ? "Your new website" : service() === "audit" ? "Which website should I audit?" : "Which website should I redesign?";
-  }
-  if (n === 4) renderSummary();
-  const top = wizard.getBoundingClientRect().top;
-  if (top < 0 || top > innerHeight * 0.5) wizard.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-}
-btnNext.addEventListener("click", () => { if (validateStep(step)) goTo(step + 1); });
-btnPrev.addEventListener("click", () => goTo(step - 1));
-
-// Jump-in buttons from other sections
-function startWith(opts) {
-  if (opts.service) { F("service").value = opts.service; }
-  if (opts.style) { F("style").value = opts.style; }
-  doneBox.hidden = true; form.hidden = false;
-  document.getElementById("start").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-  setTimeout(() => goTo(opts.service ? 2 : 1), reduceMotion ? 0 : 500);
-}
-$$("[data-pick-service]").forEach((b) => b.addEventListener("click", () => startWith({ service: b.dataset.pickService })));
-$$("[data-like-style]").forEach((b) => b.addEventListener("click", () => startWith({ style: b.dataset.likeStyle })));
-
-/* ---------- Quick audit (Google PageSpeed) ---------- */
-const auditBox = $("[data-audit]");
-$("[data-run-audit]").addEventListener("click", runAudit);
-async function runAudit() {
-  const url = normaliseUrl(F("url").value);
-  if (!url) { showError("url", "Enter your website address, for example yourbusiness.com"); return; }
-  F("url").value = url;
-  auditBox.hidden = false;
-  $("[data-audit-loading]").hidden = false;
-  $("[data-audit-result]").hidden = true;
-  $("[data-audit-fallback]").hidden = true;
-  state.audit = null;
-  const cats = ["performance", "accessibility", "best-practices", "seo"];
-  const api = new URL("https://www.googleapis.com/pagespeedonline/v5/runPagespeed");
-  api.searchParams.set("url", url);
-  api.searchParams.set("strategy", "mobile");
-  cats.forEach((c) => api.searchParams.append("category", c));
-  if (CONFIG.pagespeedKey) api.searchParams.set("key", CONFIG.pagespeedKey);
-  try {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 60000);
-    const res = await fetch(api, { signal: ctrl.signal });
-    clearTimeout(timer);
-    const data = await res.json();
-    if (!res.ok || !data.lighthouseResult) throw new Error("audit unavailable");
-    const c = data.lighthouseResult.categories;
-    const a = data.lighthouseResult.audits;
-    const scores = {
-      Speed: Math.round(c.performance.score * 100),
-      Accessibility: Math.round(c.accessibility.score * 100),
-      "Best practice": Math.round(c["best-practices"].score * 100),
-      SEO: Math.round(c.seo.score * 100),
-    };
-    state.audit = { scores, lcp: a["largest-contentful-paint"]?.displayValue };
-    $("[data-scores]").innerHTML = Object.entries(scores).map(([k, v]) => {
-      const col = v >= 90 ? "var(--mint)" : v >= 50 ? "#FEBC2E" : "#FF6B6F";
-      return `<div class="score"><div class="score__ring" style="--c:${col}" data-p="${v}"><b>${v}</b></div>${k}</div>`;
-    }).join("");
-    requestAnimationFrame(() => $$(".score__ring").forEach((r) => animateRing(r, +r.dataset.p)));
-    const weakest = Object.entries(scores).sort((x, y) => x[1] - y[1])[0];
-    $("[data-audit-note]").textContent = `Mobile check done. Main content shows after ${state.audit.lcp || "an unknown time"}. Your weakest area is ${weakest[0].toLowerCase()} at ${weakest[1]} out of 100. I will include fixes for this in your full audit.`;
-    $("[data-audit-loading]").hidden = true;
-    $("[data-audit-result]").hidden = false;
-  } catch {
-    $("[data-audit-loading]").hidden = true;
-    $("[data-audit-fallback]").hidden = false;
-  }
-}
-function animateRing(el, target) {
-  const start = performance.now(), dur = reduceMotion ? 1 : 1200;
-  const tick = (now) => {
-    const t = Math.min((now - start) / dur, 1), v = Math.round(target * (1 - Math.pow(1 - t, 4)));
-    el.style.setProperty("--p", v); if (t < 1) requestAnimationFrame(tick);
+  /* ===== Brief builder ===== */
+  var OPTIONS = {
+    industry: ["Car dealer", "Car rental", "Real estate", "Restaurant or café", "Clinic or health", "Salon or beauty", "School", "Church", "Logistics", "Online store", "Professional services", "Other"],
+    project: ["New website", "Redesign my current website", "Fix my current website"],
+    goals: ["Get more enquiries", "Take bookings online", "Show my stock or listings", "Sell products online", "Look more professional", "Rank on Google", "Build trust with new customers"],
+    pages: ["Home", "About", "Services", "Stock or listings", "Gallery", "Pricing", "Testimonials", "Blog", "FAQ", "Contact"],
+    features: ["WhatsApp chat button", "Booking or appointment form", "Online payments", "Interactive 3D showcase", "Search and filters", "Live chat", "Google Maps location", "Currency switcher", "Newsletter sign up", "Blog you can update"],
+    style: ["Luxury", "Minimal", "Bold", "Warm", "Corporate", "Playful", "Modern tech"],
+    budget: ["Under $500", "$500 to $1,000", "$1,000 to $2,500", "$2,500 and above", "Not sure yet"],
+    timeline: ["As soon as possible", "Within 2 to 4 weeks", "Within 1 to 2 months", "Flexible"],
+    content: ["Logo", "Photos", "Text for the pages", "Domain name", "Hosting", "None yet"]
   };
-  requestAnimationFrame(tick);
-}
+  var state = { industry: [], project: [], goals: [], pages: ["Home", "Contact"], features: ["WhatsApp chat button"], style: [], budget: [], timeline: [], content: [], design: null };
 
-/* ---------- Summary + send ---------- */
-function collect() {
-  const s = service();
-  const niche = state.niche === "Other" ? F("nicheOther").value.trim() : state.niche;
-  const rows = [["Service", SERVICE_LABEL[s]]];
-  if (s === "design") {
-    rows.push(["Website type", state.siteType]);
-    if (state.domain) rows.push(["Domain", state.domain]);
-  } else {
-    rows.push(["Website", normaliseUrl(F("url").value)]);
-    if (state.audit) rows.push(["Quick check", Object.entries(state.audit.scores).map(([k, v]) => `${k} ${v}`).join(", ")]);
-    if (state.issues.length) rows.push(["Problems", state.issues.join(", ")]);
+  $$(".chips").forEach(function (box) {
+    var g = box.dataset.group, single = box.hasAttribute("data-single");
+    box.setAttribute("role", "group");
+    box.innerHTML = OPTIONS[g].map(function (o) {
+      return '<button type="button" class="chip" aria-pressed="' + (state[g].indexOf(o) > -1) + '">' + o + "</button>";
+    }).join("");
+    box.addEventListener("click", function (e) {
+      var c = e.target.closest(".chip"); if (!c) return;
+      var v = c.textContent;
+      if (single) { state[g] = [v]; $$(".chip", box).forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); }); }
+      else {
+        var i = state[g].indexOf(v);
+        if (i > -1) state[g].splice(i, 1); else state[g].push(v);
+        c.setAttribute("aria-pressed", String(i < 0));
+      }
+      box.classList.remove("invalid");
+      render();
+    });
+  });
+
+  var pick = $("#design-pick");
+  pick.innerHTML = DESIGNS.map(function (d) {
+    return '<button type="button" class="pick" data-pick="' + d.id + '" aria-pressed="false"><img src="assets/designs/d' + d.id + '-sm.jpg" alt="" loading="lazy" width="600" height="400"><span>' + d.id + ". " + d.name + "</span></button>";
+  }).join("") + '<button type="button" class="pick custom" data-pick="custom" aria-pressed="false"><i class="ph ph-pencil-simple-line" aria-hidden="true"></i><span>Something else</span></button>';
+  function setDesign(v) {
+    state.design = v;
+    $$(".pick").forEach(function (p) { p.setAttribute("aria-pressed", String(p.dataset.pick === String(v))); });
+    render();
   }
-  rows.push(["Company", F("company").value.trim()], ["Niche", niche]);
-  if (F("style").value) rows.push(["Style", STYLE_LABEL[F("style").value]]);
-  if (state.goals.length) rows.push(["Goals", state.goals.join(", ")]);
-  if (F("timeline").value) rows.push(["Timeline", F("timeline").value]);
-  if (F("notes").value.trim()) rows.push(["Notes", F("notes").value.trim()]);
-  return rows.filter(([, v]) => v);
-}
-const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-function renderSummary() {
-  $("[data-summary]").innerHTML = `<h4>Your request</h4><dl>${collect().map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
-}
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (step !== 4) { btnNext.click(); return; }
-  if (!validateStep(4)) return;
-  const name = F("name").value.trim();
-  const lines = [
-    `Hello Promise, my name is ${name}. I have just completed the project form on your portfolio.`,
-    "",
-    ...collect().map(([k, v]) => `${k}: ${v}`),
-  ];
-  if (F("email").value.trim()) lines.push(`Email: ${F("email").value.trim()}`);
-  const link = waLink(lines.join("\n"), true);
-  $("[data-done-link]").href = link;
-  form.hidden = true;
-  $(".wizard__progress").hidden = true;
-  doneBox.hidden = false;
-  window.open(link, "_blank", "noopener");
-});
-$("[data-restart]").addEventListener("click", () => {
-  form.reset();
-  Object.assign(state, { issues: [], goals: [], siteType: "", domain: "", niche: "", audit: null });
-  $$(".chip.is-on", form).forEach((c) => c.classList.remove("is-on"));
-  $(".other-input", form).hidden = true;
-  auditBox.hidden = true;
-  doneBox.hidden = true; form.hidden = false; $(".wizard__progress").hidden = false;
-  goTo(1);
-});
+  pick.addEventListener("click", function (e) { var p = e.target.closest(".pick"); if (p) setDesign(p.dataset.pick === "custom" ? "custom" : +p.dataset.pick); });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-design]"); if (!a) return;
+    var v = a.dataset.design === "custom" ? "custom" : +a.dataset.design;
+    setDesign(v);
+    if (v === "custom") setTimeout(function () { var n = $("#f-notes"); n.placeholder = "Describe the website you want: the look, feel, colours and anything you've seen that you like."; }, 0);
+  });
+
+  // Turn rough notes into clear, professional sentences.
+  var SHORT = { "pls": "please", "plz": "please", "u": "you", "ur": "your", "r": "are", "wanna": "want to", "gonna": "going to", "abt": "about", "asap": "as soon as possible", "msg": "message", "dm": "message", "info": "information", "thru": "through", "bcos": "because", "cos": "because", "coz": "because", "tho": "though", "wat": "what", "dey": "they", "wit": "with", "d": "the", "nd": "and", "n": "and", "im": "I am", "i'm": "I am", "dont": "do not", "cant": "cannot", "wont": "will not", "biz": "business", "pics": "photos", "pic": "photo", "whatsap": "WhatsApp", "whatsapp": "WhatsApp", "watsapp": "WhatsApp", "ig": "Instagram", "fb": "Facebook" };
+  function polish(text) {
+    var t = (text || "").replace(/\s+/g, " ").trim();
+    if (!t) return "";
+    t = t.replace(/[!?.]{2,}/g, ".").replace(/\s+([,.!?])/g, "$1");
+    t = t.replace(/\b[\w']+\b/g, function (w) { var k = w.toLowerCase(); return SHORT.hasOwnProperty(k) ? SHORT[k] : w; });
+    t = t.replace(/\bi\b/g, "I").replace(/\b(also|and|but|so)\s+(also|and)\b/gi, "$1");
+    var parts = t.replace(/([.!?])\s+/g, "$1|").split(/\||\s+(?:and also|also)\s+/i).map(function (s) {
+      s = s.trim().replace(/[,;]$/, ""); if (!s) return "";
+      s = s.charAt(0).toUpperCase() + s.slice(1);
+      s = s.replace(/^I want\b/, "We would like").replace(/^I need\b/, "We need").replace(/^I would like\b/, "We would like").replace(/\bmy\b/g, "our").replace(/\bme\b/g, "us").replace(/^I\b/, "We");
+      return /[.!?]$/.test(s) ? s : s + ".";
+    }).filter(Boolean);
+    return parts.join(" ");
+  }
+  $("#polish").addEventListener("click", function () {
+    var n = $("#f-notes"), before = n.value.trim(), m = $("#polish-msg");
+    if (!before) { m.textContent = "Write a few words first, in any style. We'll tidy them up."; return; }
+    var after = polish(before);
+    n.value = after; m.textContent = after === before ? "Your notes already read well." : "Done. Edit anything you like before sending.";
+    render();
+  });
+
+  function val(id) { return ($("#" + id).value || "").trim(); }
+  function list(a, fallback) { return a.length ? a.join(", ") : (fallback || "Not specified"); }
+  function bullets(a) { return a.length ? a.map(function (x) { return "• " + x; }).join("\n") : "• To be discussed"; }
+  function buildBrief() {
+    var d = state.design, design;
+    if (d === "custom") design = "Custom design (described in the notes below)";
+    else if (d) design = "Design " + d + ": " + DESIGNS[d - 1].name + " (" + DESIGNS[d - 1].desc.replace(/\.$/, "") + ")";
+    else design = "Not chosen yet";
+    var biz = val("f-business") || "Your business", ind = list(state.industry, "business").toLowerCase(), loc = val("f-location");
+    var notes = val("f-notes");
+    var date = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    return [
+      "PROJECT BRIEF: " + biz.toUpperCase(),
+      "Prepared " + date + " via vixautomationsportfolio.pages.dev",
+      "",
+      "1. BUSINESS OVERVIEW",
+      biz + " is a " + ind + (loc ? " based in " + loc : "") + "." + (val("f-current") ? " Current website: " + val("f-current") + "." : ""),
+      "",
+      "2. PROJECT TYPE",
+      list(state.project, "To be confirmed"),
+      "",
+      "3. GOALS",
+      bullets(state.goals),
+      "",
+      "4. PAGES",
+      list(state.pages),
+      "",
+      "5. FEATURES",
+      bullets(state.features),
+      "",
+      "6. DESIGN DIRECTION",
+      "Chosen design: " + design,
+      "Style: " + list(state.style),
+      "Colours: " + (val("f-colours") || "Open to suggestions"),
+      "Reference websites: " + (val("f-refs") || "None given"),
+      "",
+      "7. BUDGET AND TIMELINE",
+      "Budget: " + list(state.budget),
+      "Timeline: " + list(state.timeline),
+      "Content ready: " + list(state.content),
+      "",
+      "8. CONTACT",
+      "Name: " + (val("f-name") || "-"),
+      "Email: " + (val("f-email") || "-"),
+      "WhatsApp: " + (val("f-phone") || "-"),
+      "",
+      "9. ADDITIONAL NOTES",
+      notes || "None"
+    ].join("\n");
+  }
+  var pre = $("#brief-text");
+  function render() { pre.textContent = buildBrief(); }
+  $("#brief-form").addEventListener("input", function (e) { e.target.classList.remove("invalid"); render(); });
+
+  // Step navigation
+  var step = 1, TOTAL = 6;
+  var form = $("#brief-form"), msg = $("#form-msg");
+  function show(n) {
+    step = n;
+    $$(".step", form).forEach(function (f) { f.hidden = +f.dataset.step !== n; });
+    $("#progress-bar").style.width = (n / TOTAL * 100) + "%";
+    $("#step-count").textContent = "Step " + n + " of " + TOTAL;
+    $("#back").hidden = n === 1; $("#next").hidden = n === TOTAL; $("#send").hidden = n !== TOTAL;
+    msg.textContent = ""; msg.className = "msg";
+  }
+  function check(n) {
+    var bad = [];
+    $$(".step[data-step='" + n + "'] [required]", form).forEach(function (el) {
+      var ok = el.value.trim() !== "";
+      if (el.type === "email") ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+      if (el.name === "phone") ok = /^\+?[\d\s()-]{10,18}$/.test(el.value.trim());
+      el.classList.toggle("invalid", !ok); if (!ok) bad.push(el);
+    });
+    if (n === 1 && !state.industry.length) { $(".chips[data-group='industry']").classList.add("invalid"); bad.push(null); }
+    if (n === 2 && !state.project.length) { $(".chips[data-group='project']").classList.add("invalid"); bad.push(null); }
+    if (bad.length) {
+      msg.className = "msg err";
+      msg.textContent = n === 6 ? "Please add a valid email and a WhatsApp number with at least 10 digits." : "Please fill in the highlighted fields to continue.";
+      if (bad[0]) bad[0].focus();
+      return false;
+    }
+    return true;
+  }
+  $("#next").addEventListener("click", function () { if (check(step)) { show(step + 1); form.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } });
+  $("#back").addEventListener("click", function () { show(step - 1); });
+  $("#copy").addEventListener("click", function () {
+    navigator.clipboard && navigator.clipboard.writeText(pre.textContent).then(function () { $("#copy").setAttribute("aria-label", "Copied"); $("#copy").innerHTML = '<i class="ph ph-check" aria-hidden="true"></i>'; });
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!check(6)) return;
+    var brief = buildBrief(), biz = val("f-business");
+    var waUrl = waText("Hello Vix Automations, here is my website project brief:\n\n" + brief);
+    var mailUrl = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Website project brief: " + biz) + "&body=" + encodeURIComponent(brief);
+    var send = $("#send"); send.disabled = true; send.textContent = "Sending…";
+
+    // 1) Email the brief to the inbox in the background.
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
+    var emailed = fetch(EMAIL_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ _subject: "New website brief: " + biz, _template: "box", _captcha: "false", _replyto: val("f-email"), name: val("f-name"), email: val("f-email"), whatsapp: val("f-phone"), business: biz, brief: brief }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (j) { return String(j.success) === "true"; }).catch(function () { return false; });
+
+    // 2) Open WhatsApp with the brief ready to send (needs the visitor's tap, so it runs inside the click).
+    window.open(waUrl, "_blank", "noopener");
+
+    // 3) Show the confirmation.
+    $("#done-wa").href = waUrl; $("#done-mail").href = mailUrl;
+    emailed.then(function (ok) {
+      clearTimeout(timer);
+      $(".builder").hidden = true; $("#done").hidden = false;
+      $("#done-text").textContent = ok
+        ? "We've received your brief by email, and WhatsApp has opened with it ready to send. Tap send there so we can reply faster. We'll get back to you within one business day."
+        : "WhatsApp has opened with your brief ready to send, so tap send there. Our email form didn't respond just now, so please also tap \"Send by email instead\" to make sure we receive it.";
+      $("#done").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    });
+  });
+  show(1); render();
+
+  /* ===== Navigation ===== */
+  var burger = $(".burger"), panel = $("#panel");
+  function menu(open) {
+    document.body.classList.toggle("menu-open", open);
+    burger.setAttribute("aria-expanded", String(open)); burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    panel.setAttribute("aria-hidden", String(!open));
+    $$("a", panel).forEach(function (a, i) { a.style.transitionDelay = open ? Math.min(i * 60, 400) + "ms" : "0ms"; });
+  }
+  burger.addEventListener("click", function () { menu(burger.getAttribute("aria-expanded") !== "true"); });
+  panel.addEventListener("click", function (e) { if (e.target.closest("a")) menu(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") menu(false); });
+
+  /* ===== Reveals ===== */
+  var tag = $("#tagline");
+  tag.innerHTML = tag.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + "</span>"; }).join(" ");
+  if (!("IntersectionObserver" in window) || reduce) {
+    $$(".rv").forEach(function (el) { el.classList.add("in"); }); $$(".w", tag).forEach(function (w) { w.classList.add("on"); });
+  } else {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, { threshold: 0.12 });
+    $$(".rv").forEach(function (el) { io.observe(el); });
+    var wo = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("on"); wo.unobserve(x.target); } }); }, { rootMargin: "0px 0px -40% 0px" });
+    $$(".w", tag).forEach(function (w) { wo.observe(w); });
+    var links = $$(".nav-links a");
+    var so = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) links.forEach(function (a) { a.setAttribute("aria-current", String(a.getAttribute("href") === "#" + x.target.id)); }); }); }, { rootMargin: "-45% 0px -50% 0px" });
+    ["top", "designs", "work", "process", "brief", "faq"].forEach(function (id) { var el = document.getElementById(id); if (el) so.observe(el); });
+  }
+})();
