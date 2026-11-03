@@ -3,7 +3,7 @@
 
   /* ===== Settings ===== */
   var EMAIL = "vixautomations@gmail.com";
-  var EMAIL_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL; // delivers the brief to the inbox
+  var BRIEF_ENDPOINT = "https://vixautomations.pages.dev/api/brief"; // saves the brief and emails it to the inbox
   var WA_UK = "447723149573";                                 // can carry the brief text
   var WA_NG = "https://wa.me/message/WV3WLO4FC656K";          // Nigeria line, no prefilled text
 
@@ -231,33 +231,31 @@
     e.preventDefault();
     if (!check(6)) return;
     var brief = buildBrief(), biz = val("f-business");
-    var waUrl = waText("Hello Vix Automations, here is my website project brief:\n\n" + brief);
     var mailUrl = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Website project brief: " + biz) + "&body=" + encodeURIComponent(brief);
-    var send = $("#send"); send.disabled = true; send.textContent = "Sending…";
-
-    // 1) Email the brief to the inbox in the background.
+    var send = $("#send"), label = send.innerHTML; send.disabled = true; send.textContent = "Sending…";
     var ctrl = window.AbortController ? new AbortController() : null;
-    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
-    var emailed = fetch(EMAIL_ENDPOINT, {
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 20000);
+    fetch(BRIEF_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ _subject: "New website brief: " + biz, _template: "box", _captcha: "false", _replyto: val("f-email"), name: val("f-name"), email: val("f-email"), whatsapp: val("f-phone"), business: biz, brief: brief }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source: "Portfolio brief builder", subject: "New website brief: " + biz, name: val("f-name"), email: val("f-email"), whatsapp: val("f-phone"), business: biz, text: brief }),
       signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (j) { return String(j.success) === "true"; }).catch(function () { return false; });
-
-    // 2) Open WhatsApp with the brief ready to send (needs the visitor's tap, so it runs inside the click).
-    window.open(waUrl, "_blank", "noopener");
-
-    // 3) Show the confirmation.
-    $("#done-wa").href = waUrl; $("#done-mail").href = mailUrl;
-    emailed.then(function (ok) {
-      clearTimeout(timer);
-      $(".builder").hidden = true; $("#done").hidden = false;
-      $("#done-text").textContent = ok
-        ? "We've received your brief by email, and WhatsApp has opened with it ready to send. Tap send there so we can reply faster. We'll get back to you within one business day."
-        : "WhatsApp has opened with your brief ready to send, so tap send there. Our email form didn't respond just now, so please also tap \"Send by email instead\" to make sure we receive it.";
-      $("#done").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-    });
+    }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "failed"); return j; }); })
+      .then(function () {
+        $("#done-title").textContent = "Your brief has been sent";
+        $("#done-text").textContent = "Thank you! Your project brief is in our inbox. We'll review it and email you a fixed quote within one business day.";
+        $("#done-mail").hidden = true;
+      })
+      .catch(function () {
+        $("#done-title").textContent = "One more step";
+        $("#done-text").textContent = "We couldn't send your brief automatically just now. Please tap the button below to send it by email, it's already written for you.";
+        $("#done-mail").href = mailUrl; $("#done-mail").hidden = false;
+      })
+      .finally(function () {
+        clearTimeout(timer); send.disabled = false; send.innerHTML = label;
+        $(".builder").hidden = true; $("#done").hidden = false;
+        $("#done").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+      });
   });
   show(1); render();
 
