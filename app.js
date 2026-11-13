@@ -16,7 +16,7 @@
     return (navigator.languages || [navigator.language || ""]).some(function (l) { return /-NG$/i.test(l); });
   }
   function waText(text) { return "https://wa.me/" + WA_UK + "?text=" + encodeURIComponent(text); }
-  var waPlain = inNigeria() ? WA_NG : waText("Hello Vix Automations, I visited your website and I'd like to discuss a website project.");
+  var waPlain = inNigeria() ? WA_NG : waText("Hello Vix Assist, I visited your website and I'd like to discuss a website project.");
   $$("[data-wa-plain]").forEach(function (a) { a.href = waPlain; });
   $("#yr").textContent = new Date().getFullYear();
 

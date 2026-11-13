@@ -13,10 +13,10 @@ PAGES = {}
 
 PAGES["about"] = dict(
     title="About us",
-    desc="Vix Studio is the web design studio of Vix Automations, founded by Promise Felix, working with businesses in Lagos and London.",
+    desc="Vix Studio is the web design studio of Vix Assist, founded by Promise Felix, working with businesses in Lagos and London.",
     eyebrow="About Vix Studio",
     h1="We build websites that make businesses look as good as they are",
-    intro="Vix Studio is the web design studio of Vix Automations, founded by Promise Felix. We work with businesses in Nigeria and the UK, especially car dealers, car rental companies, real estate agents, restaurants and service businesses.",
+    intro="Vix Studio is the web design studio of Vix Assist, founded by Promise Felix. We work with businesses in Nigeria and the UK, especially car dealers, car rental companies, real estate agents, restaurants and service businesses.",
     body=f"""
 <h2>Why we started</h2>
 <p>Many good businesses lose customers online without knowing it. Their website is outdated, slow on phones, broken, or missing altogether, so buyers who search for them find nothing they can trust. We started Vix Studio to fix that: modern, fast websites that win trust at first glance and turn visitors into enquiries.</p>
@@ -26,7 +26,7 @@ PAGES["about"] = dict(
 <li><b>New websites</b> designed from scratch for your business and your customers.</li>
 <li><b>Redesigns</b> of outdated, slow or broken websites, including recovering sites whose domain has expired.</li>
 <li><b>Interactive features</b> like 3D showcases, car and property listings, booking forms and WhatsApp enquiries.</li>
-<li><b>Business automation</b> with GoHighLevel: lead capture, follow-ups, reminders and pipelines, through Vix Automations.</li>
+<li><b>Business automation</b> with GoHighLevel: lead capture, follow-ups, reminders and pipelines, through Vix Assist.</li>
 <li><b>TikTok and social media marketing</b> to bring more people to your new website.</li>
 </ul>
 
@@ -51,7 +51,7 @@ PAGES["privacy"] = dict(
     desc="How Vix Studio collects, uses and protects your personal information.",
     eyebrow="Policies",
     h1="Privacy policy",
-    intro="This policy explains what personal information Vix Studio (Vix Automations) collects, why we collect it, and the choices you have. We keep it simple: we only collect what we need to reply to you and deliver your project.",
+    intro="This policy explains what personal information Vix Studio (Vix Assist) collects, why we collect it, and the choices you have. We keep it simple: we only collect what we need to reply to you and deliver your project.",
     body=f"""
 <h2>What we collect</h2>
 <ul>
@@ -237,7 +237,7 @@ SHELL = """<!doctype html>
   </div>
 </main>
 <footer class="site">
-  <div class="wrap legal"><span>© 2026 Vix Automations</span>{links}</div>
+  <div class="wrap legal"><span>© 2026 Vix Assist</span>{links}</div>
 </footer>
 </body>
 </html>
