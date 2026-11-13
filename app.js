@@ -2,8 +2,8 @@
   "use strict";
 
   /* ===== Settings ===== */
-  var EMAIL = "vixautomations@gmail.com";
-  var BRIEF_ENDPOINT = "https://vixautomations.pages.dev/api/brief"; // saves the brief and emails it to the inbox
+  var EMAIL = "support@vixassist.com";
+  var BRIEF_ENDPOINT = "https://vixassist.com/api/brief"; // saves the brief and emails it to the inbox
   var WA_UK = "447723149573";                                 // can carry the brief text
   var WA_NG = "https://wa.me/message/WV3WLO4FC656K";          // Nigeria line, no prefilled text
 

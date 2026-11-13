@@ -305,7 +305,7 @@ def build(slug, name, kind, area, social_label, social_url, phone, accent):
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&display=swap" rel="stylesheet">
 <style>{CSS.replace('ACCENT', accent)}</style></head>
 <body>
-<div class="ribbon">✨ <b>Website preview designed for {esc(name)}</b> by <a href="https://vixautomations.pages.dev/free-design" target="_blank" rel="noopener">Vix Assist</a>. Sample products and photos. We'll swap in your real stock, prices and logo.</div>
+<div class="ribbon">✨ <b>Website preview designed for {esc(name)}</b> by <a href="https://vixassist.com/free-design" target="_blank" rel="noopener">Vix Assist</a>. Sample products and photos. We'll swap in your real stock, prices and logo.</div>
 <header><div class="wrap nav">
 <a class="logo" href="#top"><i>{esc(initials(name))}</i><span>{esc(name)}</span></a>
 <nav class="links"><a href="#shop">Shop</a><a href="#service">{'Repairs' if kind == 'phones' else 'Services'}</a><a href="#why">Why us</a><a href="#visit">Visit</a></nav>
@@ -348,7 +348,7 @@ def build(slug, name, kind, area, social_label, social_url, phone, accent):
 <div class="btns"><a class="btn p" href="{esc(contact_href)}" target="_blank" rel="noopener">{esc(contact_label)}</a></div>
 </div></div></section>
 </main>
-<footer><div class="wrap foot"><span>© 2026 {esc(name)}. All rights reserved.</span><span>Website preview by <a href="https://vixautomations.pages.dev" target="_blank" rel="noopener"><b>Vix Assist</b></a></span></div></footer>
+<footer><div class="wrap foot"><span>© 2026 {esc(name)}. All rights reserved.</span><span>Website preview by <a href="https://vixassist.com" target="_blank" rel="noopener"><b>Vix Assist</b></a></span></div></footer>
 
 <div class="drawer" id="drawer"><div class="shade" data-x></div><div class="panel">
 <h3>Your bag <button data-x aria-label="Close">×</button></h3>
