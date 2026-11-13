@@ -7,7 +7,7 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 UPDATED = "4 November 2026"
-EMAIL = "vixautomations@gmail.com"
+EMAIL = "support@vixassist.com"
 
 PAGES = {}
 
