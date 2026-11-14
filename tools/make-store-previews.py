@@ -9,7 +9,7 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-BASE = "https://vixautomationsportfolio.pages.dev"
+BASE = "https://design.vixassist.com"
 
 # slug, name, kind, area, social label, social url, phone (optional), accent
 STORES = [

@@ -168,4 +168,4 @@ for slug, name, kind, num, accent in COMPANIES:
     out = ROOT / "p" / slug / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html)
-    print(f"https://vixautomationsportfolio.pages.dev/p/{slug}/  {name}")
+    print(f"https://design.vixassist.com/p/{slug}/  {name}")

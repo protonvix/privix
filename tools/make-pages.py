@@ -203,10 +203,10 @@ SHELL = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} · Vix Studio</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="https://vixautomationsportfolio.pages.dev/{slug}.html">
+<link rel="canonical" href="https://design.vixassist.com/{slug}.html">
 <meta property="og:title" content="{title} · Vix Studio">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://vixautomationsportfolio.pages.dev/assets/og.jpg">
+<meta property="og:image" content="https://design.vixassist.com/assets/og.jpg">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
