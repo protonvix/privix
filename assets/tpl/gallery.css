@@ -1,0 +1,34 @@
+/* Vix Assist Websites: template gallery pages (matches the vixassist.com look) */
+*{box-sizing:border-box}body{margin:0;background:#F6F5F1;color:#3A3A40;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.gw{width:min(1240px,100% - 40px);margin:0 auto}
+.gnav{position:sticky;top:0;z-index:20;background:rgba(246,245,241,.88);backdrop-filter:blur(14px);border-bottom:1px solid #E4E1D9}
+.gnav .gw{display:flex;align-items:center;gap:28px;height:68px}
+.glogo{display:flex;align-items:center;gap:10px;font-weight:600;color:#111113;font-size:17px;white-space:nowrap}
+.glogo span{font-weight:600}.glogo small{font-weight:500;color:#66666E;font-size:13px;border-left:1px solid #D6D2C8;padding-left:10px}
+.gnav nav{display:flex;gap:4px;margin-left:auto}
+.gnav nav a{padding:8px 14px;border-radius:999px;font-size:14px;color:#66666E;font-weight:500}
+.gnav nav a:hover,.gnav nav a[aria-current]{background:#ECE9E2;color:#111113}
+.gbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:#111113;color:#fff;font-weight:600;font-size:14px;white-space:nowrap;transition:background .3s}
+.gbtn:hover{background:#1F5A45}.gbtn.o{background:transparent;color:#111113;border:1px solid #D6D2C8}
+.ghero{padding:110px 0 56px}
+.gk{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#66666E}
+.ghero h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(46px,6.4vw,88px);line-height:1;letter-spacing:-.02em;color:#111113;margin:16px 0 0;max-width:900px}
+.ghero h1 em,.gcta h2 em{color:#1F5A45}
+.ghero p{font-size:19px;line-height:30px;color:#66666E;max-width:680px;margin-top:20px}
+.ggrid .gw{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding-bottom:40px}
+.tcard{display:block;border-radius:22px;background:#fff;border:1px solid #E4E1D9;overflow:hidden;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s}
+.tcard:hover{transform:translateY(-6px);box-shadow:0 40px 80px -40px rgba(17,17,19,.35)}
+.shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid #E4E1D9;background:#ECE9E2}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 6s linear}
+.tcard:hover .shot img{transform:translateY(-12%)}
+.meta{display:flex;align-items:center;gap:14px;padding:18px 22px}
+.meta span{font-size:12px;color:#8C8C93;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.meta b{font-size:18px;color:#111113}
+.meta em{margin-left:auto;font-style:normal;font-size:14px;font-weight:600;color:#1F5A45}
+.gcta{padding:80px 0 110px;text-align:center}
+.gcta h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.05;color:#111113;margin:0}
+.gcta p{color:#66666E;font-size:18px;margin:16px auto 28px;max-width:560px}
+.gfoot{padding:32px 0;border-top:1px solid #E4E1D9;font-size:13px;color:#8C8C93}
+@media (max-width:900px){.ggrid .gw{grid-template-columns:1fr}.gnav nav{display:none}.ghero{padding:72px 0 32px}}
+@media (max-width:520px){.glogo small{display:none}.gnav .gbtn{padding:10px 16px}.meta{flex-wrap:wrap}.meta em{margin-left:0}}
