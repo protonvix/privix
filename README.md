@@ -1,6 +1,6 @@
 # Vix Studio · Websites by Promise Felix
 
-Static site (no build step), deployed on Cloudflare Pages at https://vixautomationsportfolio.pages.dev.
+Static site (no build step), deployed on Cloudflare Pages at https://design.vixassist.com.
 
 - `index.html`, `styles.css`, `app.js`: the page, the 10-design gallery and the 6-step brief builder.
 - `scene.js`: the interactive 3D showcase (Three.js, loaded from unpkg): a car with paint colours and a house with day and night.
